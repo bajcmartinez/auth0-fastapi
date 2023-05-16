@@ -1,0 +1,1 @@
+from .auth0_jwt_bearer_token_validator import Auth0JWTBearerTokenValidator
