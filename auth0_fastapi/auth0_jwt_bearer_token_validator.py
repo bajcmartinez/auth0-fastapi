@@ -1,6 +1,8 @@
+from typing import Optional
+
 from fastapi import Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials, SecurityScopes
-from jwt import PyJWK, PyJWKClient, decode as PyJWTDecode
+from jwt import PyJWK, PyJWKClient, decode as py_jwt_decode
 from jwt.exceptions import PyJWKClientError, DecodeError
 
 from auth0_fastapi.exceptions import UnauthenticatedException, UnauthorizedException
@@ -25,7 +27,7 @@ class Auth0JWTBearerTokenValidator:
     async def get_authenticated_user(
             self,
             security_scopes: SecurityScopes,
-            token: HTTPAuthorizationCredentials | None = Depends(HTTPBearer()),
+            token: Optional[HTTPAuthorizationCredentials] = Depends(HTTPBearer()),
     ):
         if token is None:
             raise UnauthenticatedException
@@ -40,7 +42,7 @@ class Auth0JWTBearerTokenValidator:
 
         # Decode the JWT token
         try:
-            payload = PyJWTDecode(
+            payload = py_jwt_decode(
                 jwt=token.credentials,
                 key=self._signing_key,
                 issuer=self._issuer,
