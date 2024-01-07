@@ -1,26 +1,28 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "auth0_fastapi"
-version = "0.0.1"
-authors = [
-  { name="Juan Cruz Martinez", email="bajcmartinez@gmail.com" },
-]
+version = "0.0.2"
+authors = ["Juan Cruz Martinez <bajcmartinez@gmail.com>"]
 description = "A must have if you are using Auth0 with FastAPI"
 readme = "README.md"
-requires-python = ">=3.7"
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+fastapi = "^0.108.0"
+pyjwt = "^2.8.0"
+cryptography = "^41.0.7"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.4"
+httpx = "^0.26.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
-]
-
-dependencies = [
-    "fastapi >= 0.65",
-    "PyJWT >= 2.7.0",
-    "cryptography >= 40.0.2"
 ]
 
 [project.urls]
