@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "auth0_fastapi"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["Juan Cruz Martinez <bajcmartinez@gmail.com>"]
 description = "A must have if you are using Auth0 with FastAPI"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.11"
-fastapi = "^0.108.0"
+fastapi = ">=0.105.0"
 pyjwt = "^2.8.0"
 cryptography = "^41.0.7"
 
